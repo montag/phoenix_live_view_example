@@ -6,7 +6,7 @@ defmodule DemoWeb.ClockLive do
     ~L"""
     <div>
       <h2 phx-click="boom">It's <%= strftime!(@date, "%r") %></h2>
-      <%= live_render(@socket, DemoWeb.ImageLive) %>
+      <my-custom-element msg="<%= strftime!(@date, "%r") %>"></my-custom-element>
     </div>
     """
   end

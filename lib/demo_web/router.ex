@@ -21,6 +21,7 @@ defmodule DemoWeb.Router do
     get "/", PageController, :index
 
     live "/thermostat", ThermostatLive
+    live "/vue", VueWebComponentLive
     get "/snake", PageController, :snake
     live "/search", SearchLive
     live "/clock", ClockLive
