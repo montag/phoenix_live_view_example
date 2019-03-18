@@ -9,6 +9,7 @@
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
     <script src="https://unpkg.com/vue"></script>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/my-custom-element.js") %>"></script>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/time-picker.js") %>"></script>
   </head>
   <body>
     <header>

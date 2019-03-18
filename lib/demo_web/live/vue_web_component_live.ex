@@ -7,19 +7,32 @@ defmodule DemoWeb.VueWebComponentLive do
         <input name="location" placeholder="Location" value="<%= @location %>"/>
         <%= @weather %>
       </form>
-      <my-custom-element msg="<%= @weather %>"</my-custom-element>
+      <div>[Phoenix State] Component value: <%= @val %></div>
+      <my-custom-element msg="<%= @weather %>" phx-click="action" value="<%= @val %>"></my-custom-element>
 
+      <div>[Phoenix State] Selected date: <%= @selDate %></div>
+      <time-picker phx-click="timepicker" value="<%= @selDate %>"></time-picker>
     </div>
     """
   end
 
   def mount(_session, socket) do
     send(self(), {:put, "Austin"})
-    {:ok, assign(socket, location: nil, weather: "...")}
+    {:ok, assign(socket, location: nil, weather: "...", val: "no value", selDate: "no value")}
   end
 
   def handle_event("set-location", %{"location" => location}, socket) do
     {:noreply, put_location(socket, location)}
+  end
+
+  def handle_event("action", value, socket) do
+    IO.inspect(value)
+    {:noreply, assign(socket, val: value)}
+  end
+
+  def handle_event("timepicker", value, socket) do
+    IO.inspect(value)
+    {:noreply, assign(socket, selDate: value)}
   end
 
   def handle_info({:put, location}, socket) do

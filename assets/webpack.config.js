@@ -30,7 +30,8 @@ module.exports = {
     new ExtractTextPlugin('../css/app.css'),
     new CopyWebpackPlugin([
       { from: 'static/', to: '../' },
-      { from: 'js/my-custom-element.js', to: '.' }
+      { from: 'js/my-custom-element.js', to: '.' },
+      { from: 'js/time-picker.js', to: '.' }
       ])
   ]
 };
